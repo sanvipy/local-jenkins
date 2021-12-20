@@ -1,0 +1,38 @@
+controller:
+  # Used for label app.kubernetes.io/component
+  componentName: "jenkins-controller"
+  image: "jenkins/jenkins"
+  servicePort: 8080
+  targetPort: 8080  
+  serviceType: NodePort
+  nodePort: 30201  
+  #tag: "2.289.2-lts-jdk11"
+  additionalPlugins:
+    - workflow-job:latest
+    - credentials-binding:latest
+    - git-client:latest
+    - git-server:latest
+    - greenballs:latest
+    - blueocean:latest
+    - strict-crumb-issuer:latest
+    - http_request:latest
+    - matrix-project:latest
+    - jquery:latest
+    - artifactory:latest
+    - jdk-tool:latest
+    - matrix-auth:latest
+    - credentials:latest
+    - pipeline-utility-steps:latest
+    - docker-workflow:latest
+    - command-launcher:latest
+    - github-branch-source:latest
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "256Mi"
+    limits:
+      cpu: "2000m"
+      memory: "4096Mi"
+agent:
+  Enabled: false
+
